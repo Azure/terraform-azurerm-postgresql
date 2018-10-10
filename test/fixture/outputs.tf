@@ -11,5 +11,14 @@ output "administrator_login" {
 }
 
 output "administrator_password" {
-  value = "${module.postgresql.administrator_password}"
+  value     = "${module.postgresql.administrator_password}"
+  sensitive = true
+}
+
+output "firewall_rule_ids" {
+  value = "${module.postgresql.firewall_rule_ids}"
+}
+
+output "vnet_rule_ids" {
+  value = "${module.postgresql.vnet_rule_ids}"
 }

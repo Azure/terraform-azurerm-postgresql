@@ -8,7 +8,7 @@ resource "random_id" "name" {
 
 resource "azurerm_resource_group" "test" {
   name     = "test${random_id.name.hex}"
-  location = "west us 2"
+  location = "${var.location}"
 }
 
 module "postgresql" {
@@ -33,24 +33,10 @@ module "postgresql" {
   version         = "9.5"
   ssl_enforcement = "Enabled"
 
-  db_names     = ["testdb1", "testdb2"]
+  db_names     = "${var.db_names}"
   db_charset   = "UTF8"
   db_collation = "English_United States.1252"
 
-  firewall_rule_prefix = "firewall-"
-
-  firewall_rules = [
-    {
-      name = "test1"
-
-      start_ip = "0.0.0.0"
-
-      end_ip = "255.255.255.255"
-    },
-    {
-      start_ip = "127.0.0.0"
-
-      end_ip = "127.0.1.0"
-    },
-  ]
+  firewall_rule_prefix = "${var.fw_rule_prefix}"
+  firewall_rules       = "${var.fw_rules}"
 }
