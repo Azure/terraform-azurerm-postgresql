@@ -37,15 +37,15 @@ module "postgresql" {
   db_charset   = "UTF8"
   db_collation = "English_United States.1252"
 
-  firewall_prefix = "firewall-"
+  firewall_rule_prefix = "firewall-"
 
-  firewall_ranges = [
+  firewall_rules = [
     {
       name = "test1"
 
-      start_ip = "10.0.0.5"
+      start_ip = "0.0.0.0"
 
-      end_ip = "10.0.0.8"
+      end_ip = "255.255.255.255"
     },
     {
       start_ip = "127.0.0.0"

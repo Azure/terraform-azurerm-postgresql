@@ -36,12 +36,12 @@ resource "azurerm_postgresql_database" "dbs" {
 }
 
 resource "azurerm_postgresql_firewall_rule" "firewall_rules" {
-  count               = "${length(var.firewall_ranges)}"
-  name                = "${var.firewall_prefix}${lookup(var.firewall_ranges[count.index], "name", count.index)}"
+  count               = "${length(var.firewall_rules)}"
+  name                = "${var.firewall_rule_prefix}${lookup(var.firewall_rules[count.index], "name", count.index)}"
   resource_group_name = "${var.resource_group_name}"
   server_name         = "${azurerm_postgresql_server.server.name}"
-  start_ip_address    = "${lookup(var.firewall_ranges[count.index], "start_ip")}"
-  end_ip_address      = "${lookup(var.firewall_ranges[count.index], "end_ip")}"
+  start_ip_address    = "${lookup(var.firewall_rules[count.index], "start_ip")}"
+  end_ip_address      = "${lookup(var.firewall_rules[count.index], "end_ip")}"
 }
 
 resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
