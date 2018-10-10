@@ -2,15 +2,7 @@
 
 
 [[projects]]
-  digest = "1:b62a3c5b37db602bf1158e921da1a762315a4c37855fd418a14498aa87a342d5"
-  name = "cloud.google.com/go"
-  packages = ["civil"]
-  pruneopts = "UT"
-  revision = "aad3f485ee528456e0768f20397b4d9dd941e755"
-  version = "v0.25.0"
-
-[[projects]]
-  digest = "1:517998a1f5034f85bdaf26c29f677f34509e772240e81f1ba9c2ba6eb0636981"
+  digest = "1:e9c6ba1df4e7953669dd5c2b13f6ce239ce2a7e76c498504368969b3eec87821"
   name = "github.com/gruntwork-io/terratest"
   packages = [
     "modules/collections",
@@ -24,12 +16,15 @@
   version = "v0.9.15"
 
 [[projects]]
-  branch = "master"
-  digest = "1:7d80d5561efbfcfdc3e4720bf5e331d574fd6f1e531b115ecf568aab3e2b656d"
-  name = "golang.org/x/crypto"
-  packages = ["md4"]
+  digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
+  name = "github.com/lib/pq"
+  packages = [
+    ".",
+    "oid",
+  ]
   pruneopts = "UT"
-  revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
+  revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -45,6 +40,7 @@
   input-imports = [
     "github.com/gruntwork-io/terratest/modules/retry",
     "github.com/gruntwork-io/terratest/modules/terraform",
+    "github.com/lib/pq",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
