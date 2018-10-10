@@ -4,6 +4,8 @@ import (
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
+
+	_ "github.com/lib/pq"
 )
 
 func TestTerraformPostgresql(t *testing.T) {
