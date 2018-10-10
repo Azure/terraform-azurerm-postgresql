@@ -66,6 +66,9 @@ func TestTerraformPostgresql(t *testing.T) {
 		},
 	}
 
+	// Defer the destroy to cleanup all created resources
+	defer terraform.Destroy(t, terraformOptions)
+
 	// This will init and apply the resources and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
 
@@ -95,6 +98,4 @@ func TestTerraformPostgresql(t *testing.T) {
 	if len (vnet_rule_ids) > 0 {
 		t.Fatal("Error: vnet_rule_ids is not empty!")
 	}
-	// At the end of the test, clean up any resources that were created
-	terraform.Destroy(t, terraformOptions)
 }
