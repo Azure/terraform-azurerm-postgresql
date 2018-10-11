@@ -5,11 +5,16 @@ This Terraform module creates a Azure PostgreSQL Database.
 ## Usage
 
 ```hcl
+resource "azurerm_resource_group" "rg" {
+    name     = "sample-rg"
+    location = "west us 2"
+}
+
 module "postgresql" {
   source              = "Azure/postgresql/azurerm"
 
-    resource_group_name = "sample-rg"
-    location = "west us 2"
+    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = "${azurerm_resource_group.test.location}"
 
     server_name = "sampleserver"
     sku_name = "GP_Gen5_2"
