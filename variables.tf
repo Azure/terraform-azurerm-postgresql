@@ -53,7 +53,7 @@ variable "administrator_password" {
   description = "The Password associated with the administrator_login for the PostgreSQL Server."
 }
 
-variable "version" {
+variable "server_version" {
   description = "Specifies the version of PostgreSQL to use. Valid values are 9.5, 9.6, and 10.0. Changing this forces a new resource to be created."
   default     = "9.5"
 }

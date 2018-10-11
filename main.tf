@@ -22,7 +22,7 @@ resource "azurerm_postgresql_server" "server" {
 
   administrator_login          = "${var.administrator_login}"
   administrator_login_password = "${var.administrator_password}"
-  version                      = "${var.version}"
+  version                      = "${var.server_version}"
   ssl_enforcement              = "${var.ssl_enforcement}"
 }
 
