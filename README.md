@@ -1,5 +1,3 @@
-# terraform-azure-postgresql
-
 ## Create an Azure PostgreSQL Database
 
 This Terraform module creates a Azure PostgreSQL Database.
@@ -58,7 +56,6 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Ruby **(~> 2.3)**](https://www.ruby-lang.org/en/downloads/)
 - [Bundler **(~> 1.15)**](https://bundler.io/)
 - [Terraform **(~> 0.11.7)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
@@ -77,9 +74,7 @@ Then simply run it in local shell:
 
 ```sh
 $ cd $GOPATH/src/{directory_name}/
-$ bundle install
-$ rake build
-$ rake e2e
+$ ./test.sh full
 ```
 
 ### Docker
@@ -93,27 +88,21 @@ We provide a Dockerfile to build a new image based `FROM` the `microsoft/terrafo
 #### Build the image
 
 ```sh
-$ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --build-arg BUILD_ARM_CLIENT_ID=$ARM_CLIENT_ID --build-arg BUILD_ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET --build-arg BUILD_ARM_TENANT_ID=$ARM_TENANT_ID -t azure-postgresql-module .
+$ docker build -t azure-postgresql-module .
 ```
 
 #### Run test (Docker)
 
-This runs the build and unit tests:
+This runs the local validation:
 
 ```sh
-$ docker run --rm azure-postgresql-module /bin/bash -c "bundle install && rake build"
+$ docker run --rm azure-postgresql-module /bin/bash -c "./test.sh validate"
 ```
 
-This runs the end to end tests:
+This runs the full tests (deploys resources into your Azure subscription):
 
 ```sh
-$ docker run --rm azure-postgresql-module /bin/bash -c "bundle install && rake e2e"
-```
-
-This runs the full tests:
-
-```sh
-$ docker run --rm azure-postgresql-module /bin/bash -c "bundle install && rake full"
+$ docker run -e "ARM_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID" -e "ARM_CLIENT_ID=$AZURE_CLIENT_ID" -e "ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET" -e "ARM_TENANT_ID=$AZURE_TENANT_ID" -e "ARM_TEST_LOCATION=WestUS2" -e "ARM_TEST_LOCATION_ALT=EastUS" --rm azure-postgresql-module bash -c "./test.sh full"
 ```
 
 ## License
