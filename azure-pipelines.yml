@@ -14,3 +14,4 @@ steps:
   displayName: 'docker build'
 
 - script: docker run --rm $(imageName) bash -c "./test.sh validate"
+  displayName: 'docker run'
