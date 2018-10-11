@@ -26,7 +26,7 @@ module "postgresql" {
     administrator_login = "login"
     administrator_password = "password"
 
-    version = "9.5"
+    server_version = "9.5"
     ssl_enforcement = "Enabled"
 
     db_names = ["my_db1", "my_db2"]
