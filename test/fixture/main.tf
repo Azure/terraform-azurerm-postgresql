@@ -30,7 +30,7 @@ module "postgresql" {
   administrator_login    = "azureuser"
   administrator_password = "Azur3us3r!"
 
-  version         = "9.5"
+  server_version  = "9.5"
   ssl_enforcement = "Enabled"
 
   db_names     = "${var.db_names}"
