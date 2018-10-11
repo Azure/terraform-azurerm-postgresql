@@ -12,3 +12,5 @@ variables:
 steps:
 - script: docker build -f Dockerfile -t $(imageName) .
   displayName: 'docker build'
+
+- script: docker run --rm $(imageName) bash -c "./test.sh validate"

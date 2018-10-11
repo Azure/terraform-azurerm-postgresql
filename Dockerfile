@@ -20,21 +20,14 @@ ENV ARM_TENANT_ID=${BUILD_ARM_TENANT_ID}
 ENV ARM_TEST_LOCATION=${BUILD_ARM_TEST_LOCATION}
 ENV ARM_TEST_LOCATION_ALT=${BUILD_ARM_TEST_LOCATION_ALT}
 
-RUN mkdir /usr/src/${MODULE_NAME}
-COPY . /usr/src/${MODULE_NAME}
-WORKDIR /usr/src/${MODULE_NAME}
-
 # Set work directory
-RUN mkdir /go
-RUN mkdir /go/bin
-RUN mkdir /go/src
-RUN mkdir /go/src/${MODULE_NAME}
-COPY . /go/src/${MODULE_NAME}
+RUN mkdir -p /go/src/${MODULE_NAME}
+RUN mkdir -p /go/bin
 WORKDIR /go/src/${MODULE_NAME}
 
 # Install required go packages using dep ensure
 ENV GOPATH /go
-ENV PATH /usr/local/go/bin:$GOPATH/bin:$PATH
+ENV PATH $GOPATH/bin:$PATH
 RUN /bin/bash -c "curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh"
 
-RUN ["bundle", "install", "--gemfile", "./Gemfile"]
+COPY . /go/src/${MODULE_NAME}
