@@ -33,8 +33,8 @@ module "postgresql" {
     db_charset = "UTF8"
     db_collation = "English_United States.1252"
 
-    firewall_prefix = "firewall-"
-    firewall_ranges = [
+    firewall_rule_prefix = "firewall-"
+    firewall_rules = [
         {name="test1", start_ip="10.0.0.5", end_ip="10.0.0.8"},
         {start_ip="127.0.0.0", end_ip="127.0.1.0"},
     ]
