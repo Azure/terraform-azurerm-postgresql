@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_apis/build/status/Azure.terraform-azurerm-postgresql%20(1))](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_build/latest?definitionId=4)
 ## Create an Azure PostgreSQL Database
 
 This Terraform module creates a Azure PostgreSQL Database.
@@ -61,7 +62,6 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Bundler **(~> 1.15)**](https://bundler.io/)
 - [Terraform **(~> 0.11.7)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
 
