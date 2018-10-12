@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_apis/build/status/Azure.terraform-azurerm-postgresql%20(full))](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_build/latest?definitionId=4)
+[![Build Status](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_apis/build/status/Azure.terraform-azurerm-postgresql)](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_build/latest?definitionId=2)
 ## Create an Azure PostgreSQL Database
 
 This Terraform module creates a Azure PostgreSQL Database.
@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "postgresql" {
-  source              = "Azure/postgresql/azurerm"
+    source              = "Azure/postgresql/azurerm"
 
     resource_group_name = "${azurerm_resource_group.rg.name}"
     location            = "${azurerm_resource_group.rg.location}"
