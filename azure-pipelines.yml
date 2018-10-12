@@ -13,5 +13,5 @@ steps:
   displayName: 'validate'
 
 - script: docker run -e "ARM_SUBSCRIPTION_ID=$(subscription_id)" -e "ARM_CLIENT_ID=$(client_id)" -e "ARM_CLIENT_SECRET=$(client_secret)" -e "ARM_TENANT_ID=$(tenant_id)" -e "ARM_TEST_LOCATION=WestUS2" -e "ARM_TEST_LOCATION_ALT=EastUS" --rm $(imageName) bash -c "./test.sh full"
-  displayName: 'full run'
-  #condition: and(succeeded(), not(eq(variables['client_id'], '')), not(eq(variables['client_secret'], '')))
+  displayName: 'full build'
+  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['client_id'], '')), not(eq(variables['client_secret'], '')))
