@@ -47,6 +47,11 @@ module "postgresql" {
     vnet_rules = [
         {name="subnet1", subnet_id="<subnet_id>"}
     ]
+
+    tags = {
+        Environment = "Production",
+        CostCenter = "Consoto IT",
+    }
 }
 ```
 
