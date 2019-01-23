@@ -103,3 +103,9 @@ variable "tags" {
   type        = "map"
   default     = {}
 }
+
+variable "postgresql_configurations" {
+  description = "A map with PostgreSQL configurations to enable."
+  type        = "map"
+  default     = {}
+}
