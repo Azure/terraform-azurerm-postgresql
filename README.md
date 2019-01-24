@@ -50,7 +50,7 @@ module "postgresql" {
 
     tags = {
         Environment = "Production",
-        CostCenter = "Consoto IT",
+        CostCenter = "Contoso IT",
     }
 }
 ```
