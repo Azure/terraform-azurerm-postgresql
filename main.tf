@@ -24,6 +24,8 @@ resource "azurerm_postgresql_server" "server" {
   administrator_login_password = "${var.administrator_password}"
   version                      = "${var.server_version}"
   ssl_enforcement              = "${var.ssl_enforcement}"
+
+  tags = "${var.tags}"
 }
 
 resource "azurerm_postgresql_database" "dbs" {

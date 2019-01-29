@@ -97,3 +97,9 @@ variable "vnet_rules" {
   description = "The list of maps, describing vnet rules. Valud map items: name, subnet_id."
   default     = []
 }
+
+variable "tags" {
+  description = "A map of tags to set on every taggable resources. Empty by default."
+  type        = "map"
+  default     = {}
+}
