@@ -53,3 +53,12 @@ resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
   server_name         = "${azurerm_postgresql_server.server.name}"
   subnet_id           = "${lookup(var.vnet_rules[count.index], "subnet_id")}"
 }
+
+resource "azurerm_postgresql_configuration" "db_configs" {
+  count               = "${length(keys(var.postgresql_configurations))}"
+  resource_group_name = "${var.resource_group_name}"
+  server_name         = "${azurerm_postgresql_server.server.name}"
+
+  name  = "${element(keys(var.postgresql_configurations), count.index)}"
+  value = "${element(values(var.postgresql_configurations), count.index)}"
+}

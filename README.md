@@ -52,6 +52,10 @@ module "postgresql" {
         Environment = "Production",
         CostCenter = "Contoso IT",
     }
+
+    postgresql_configurations = {
+        backslash_quote = "on",
+    }
 }
 ```
 
