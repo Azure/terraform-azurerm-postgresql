@@ -14,8 +14,8 @@ resource "azurerm_resource_group" "rg" {
 module "postgresql" {
     source              = "Azure/postgresql/azurerm"
 
-    resource_group_name = "${azurerm_resource_group.rg.name}"
-    location            = "${azurerm_resource_group.rg.location}"
+    resource_group_name = azurerm_resource_group.rg.name
+    location            = azurerm_resource_group.rg.location
 
     server_name = "sampleserver"
     sku_name = "GP_Gen5_2"
@@ -71,7 +71,7 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Terraform **(~> 0.11.7)**](https://www.terraform.io/downloads.html)
+- [Terraform **(~> 0.12.6)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
 
 #### Environment setup
