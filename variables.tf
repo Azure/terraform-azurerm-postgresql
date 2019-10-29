@@ -100,12 +100,13 @@ variable "vnet_rules" {
 
 variable "tags" {
   description = "A map of tags to set on every taggable resources. Empty by default."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "postgresql_configurations" {
   description = "A map with PostgreSQL configurations to enable."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
+
