@@ -1,5 +1,5 @@
 provider "random" {
-  version = "~> 1.0"
+  version = "~> 2.2"
 }
 
 resource "random_id" "name" {
@@ -7,15 +7,15 @@ resource "random_id" "name" {
 }
 
 resource "azurerm_resource_group" "test" {
-  name     = "test${random_id.name.hex}"
-  location = "${var.location}"
+  name     = format("test%s", random_id.name.hex)
+  location = var.location
 }
 
 module "postgresql" {
   source = "../../"
 
-  resource_group_name = "${azurerm_resource_group.test.name}"
-  location            = "${azurerm_resource_group.test.location}"
+  resource_group_name = azurerm_resource_group.test.name
+  location            = azurerm_resource_group.test.location
 
   server_name  = "postgresql${random_id.name.hex}"
   sku_name     = "GP_Gen5_2"
@@ -33,10 +33,11 @@ module "postgresql" {
   server_version  = "9.5"
   ssl_enforcement = "Enabled"
 
-  db_names     = "${var.db_names}"
+  db_names     = var.db_names
   db_charset   = "UTF8"
   db_collation = "English_United States.1252"
 
-  firewall_rule_prefix = "${var.fw_rule_prefix}"
-  firewall_rules       = "${var.fw_rules}"
+  firewall_rule_prefix = var.fw_rule_prefix
+  firewall_rules       = var.fw_rules
 }
+

@@ -1,11 +1,14 @@
-variable location {}
-
-variable db_names {
-  type = "list"
+variable "location" {
 }
 
-variable "fw_rule_prefix" {}
-
-variable fw_rules {
-  type = "list"
+variable "db_names" {
+  type = list(string)
 }
+
+variable "fw_rule_prefix" {
+}
+
+variable "fw_rules" {
+  type = list(string)
+}
+
