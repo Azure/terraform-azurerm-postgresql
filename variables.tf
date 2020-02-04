@@ -12,22 +12,7 @@ variable "server_name" {
 
 variable "sku_name" {
   description = "Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the tier + family + cores pattern (e.g. B_Gen4_1, GP_Gen5_8)."
-  default     = "B_Gen4_2"
-}
-
-variable "sku_capacity" {
-  description = "The scale up/out capacity, representing server's compute units"
-  default     = "2"
-}
-
-variable "sku_tier" {
-  description = "The tier of the particular SKU. Possible values are Basic, GeneralPurpose, and MemoryOptimized."
-  default     = "Basic"
-}
-
-variable "sku_family" {
-  description = " The family of hardware Gen4 or Gen5."
-  default     = "Gen4"
+  default     = "B_Gen5_2"
 }
 
 variable "storage_mb" {
@@ -100,12 +85,13 @@ variable "vnet_rules" {
 
 variable "tags" {
   description = "A map of tags to set on every taggable resources. Empty by default."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "postgresql_configurations" {
   description = "A map with PostgreSQL configurations to enable."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
+

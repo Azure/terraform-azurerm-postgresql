@@ -18,10 +18,7 @@ module "postgresql" {
     location            = "${azurerm_resource_group.rg.location}"
 
     server_name = "sampleserver"
-    sku_name = "GP_Gen5_2"
-    sku_capacity = 2
-    sku_tier = "GeneralPurpose"
-    sku_family = "Gen5"
+    sku_name = "B_Gen5_2"
 
     storage_mb = 5120
     backup_retention_days = 7
