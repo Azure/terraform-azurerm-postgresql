@@ -1,5 +1,6 @@
 provider "azurerm" {
-  version = ">=1.16.0"
+  version = "=2.0.0"
+  features {}
 }
 
 resource "azurerm_postgresql_server" "server" {
