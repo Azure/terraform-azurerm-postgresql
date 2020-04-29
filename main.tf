@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version = "=2.0.0"
+  version = ">=2.0.0"
   features {}
 }
 
@@ -8,12 +8,7 @@ resource "azurerm_postgresql_server" "server" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  sku {
-    name     = var.sku_name
-    capacity = var.sku_capacity
-    tier     = var.sku_tier
-    family   = var.sku_family
-  }
+  sku_name = "${var.sku_tier}_${var.sku_family}_${var.sku_capacity}"
 
   storage_profile {
     storage_mb            = var.storage_mb
