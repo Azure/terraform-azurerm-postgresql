@@ -60,7 +60,6 @@ variable "ssl_enforcement" {
 
 variable "db_names" {
   description = "The list of names of the PostgreSQL Database, which needs to be a valid PostgreSQL identifier. Changing this forces a new resource to be created."
-  type        = list(string)
   default     = []
 }
 
@@ -81,7 +80,6 @@ variable "firewall_rule_prefix" {
 
 variable "firewall_rules" {
   description = "The list of maps, describing firewall rules. Valid map items: name, start_ip, end_ip."
-  type        = list(string)
   default     = []
 }
 
