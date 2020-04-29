@@ -10,24 +10,19 @@ variable "server_name" {
   description = "Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created."
 }
 
-variable "sku_name" {
-  description = "Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the tier + family + cores pattern (e.g. B_Gen4_1, GP_Gen5_8)."
-  default     = "B_Gen4_2"
-}
-
 variable "sku_capacity" {
   description = "The scale up/out capacity, representing server's compute units"
   default     = "2"
 }
 
 variable "sku_tier" {
-  description = "The tier of the particular SKU. Possible values are Basic, GeneralPurpose, and MemoryOptimized."
-  default     = "Basic"
+  description = "The tier of the particular SKU. Possible values are B (Basic), GP (GeneralPurpose), and MO (MemoryOptimized)."
+  default     = "B"
 }
 
 variable "sku_family" {
   description = " The family of hardware Gen4 or Gen5."
-  default     = "Gen4"
+  default     = "Gen5"
 }
 
 variable "storage_mb" {
@@ -54,8 +49,8 @@ variable "administrator_password" {
 }
 
 variable "server_version" {
-  description = "Specifies the version of PostgreSQL to use. Valid values are 9.5, 9.6, and 10.0. Changing this forces a new resource to be created."
-  default     = "9.5"
+  description = "Specifies the version of PostgreSQL to use. Valid values are 9.5, 9.6, 10, 10.0, and 11. Changing this forces a new resource to be created."
+  default     = "10"
 }
 
 variable "ssl_enforcement" {
