@@ -12,16 +12,17 @@ resource "azurerm_resource_group" "rg" {
 }
 
 module "postgresql" {
-    source              = "Azure/postgresql/azurerm"
+    source = "git@github.com:Azure/terraform-azurerm-postgresql"
+    # source              = "Azure/postgresql/azurerm"
 
     resource_group_name = "${azurerm_resource_group.rg.name}"
     location            = "${azurerm_resource_group.rg.location}"
 
     server_name = "sampleserver"
-    sku_name = "GP_Gen5_2"
+
+    sku_tier     = "B"
+    sku_family   = "Gen5"
     sku_capacity = 2
-    sku_tier = "GeneralPurpose"
-    sku_family = "Gen5"
 
     storage_mb = 5120
     backup_retention_days = 7
