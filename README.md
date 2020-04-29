@@ -72,7 +72,7 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Terraform **(~> 0.11.7)**](https://www.terraform.io/downloads.html)
+- [Terraform **(~> 0.12.24)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
 
 #### Environment setup
