@@ -4,14 +4,15 @@ pool:
 
 variables:
   imageName: 'terraform-azurerm-postgresql:$(build.buildId)'
+  terraform_version: 0.12.20
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
+  - script: docker build --build-arg BUILD_TERRAFORM_VERSION=$(terraform_version) --build-arg BUILD_ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID) --build-arg BUILD_ARM_CLIENT_ID=$(ARM_CLIENT_ID) --build-arg BUILD_ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET) --build-arg BUILD_ARM_TENANT_ID=$(ARM_TENANT_ID) -t $(image_name) .
+    displayName: 'docker build'
 
-- script: docker run --rm $(imageName) bash -c "./test.sh validate"
-  displayName: 'validate'
+  - script: docker run $(image_name) rake build
+    displayName: 'validate'
 
-- script: docker run -e "ARM_SUBSCRIPTION_ID=$(subscription_id)" -e "ARM_CLIENT_ID=$(client_id)" -e "ARM_CLIENT_SECRET=$(client_secret)" -e "ARM_TENANT_ID=$(tenant_id)" -e "ARM_TEST_LOCATION=WestUS2" -e "ARM_TEST_LOCATION_ALT=EastUS" --rm $(imageName) bash -c "./test.sh full"
-  displayName: 'full build'
-  condition: and(succeeded(), not(eq(variables['build.reason'], 'PullRequest')), not(eq(variables['client_id'], '')), not(eq(variables['client_secret'], '')))
+  - script: docker run $(image_name) rake full
+    displayName: 'full build'
+    condition: and(succeeded(),eq(variables['build.sourceBranch'], 'refs/heads/master'))

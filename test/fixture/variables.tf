@@ -9,6 +9,6 @@ variable "fw_rule_prefix" {
 }
 
 variable "fw_rules" {
-  type = list(string)
+  type = list(any)
 }
 

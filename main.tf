@@ -1,29 +1,18 @@
-provider "azurerm" {
-  version = ">=1.36.0"
-}
-
 resource "azurerm_postgresql_server" "server" {
   name                = var.server_name
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  sku {
-    name     = var.sku_name
-    capacity = var.sku_capacity
-    tier     = var.sku_tier
-    family   = var.sku_family
-  }
+  sku_name = var.sku_name
 
-  storage_profile {
-    storage_mb            = var.storage_mb
-    backup_retention_days = var.backup_retention_days
-    geo_redundant_backup  = var.geo_redundant_backup
-  }
+  storage_mb            = var.storage_mb
+  backup_retention_days = var.backup_retention_days
+  geo_redundant_backup_enabled  = var.geo_redundant_backup_enabled
 
   administrator_login          = var.administrator_login
   administrator_login_password = var.administrator_password
   version                      = var.server_version
-  ssl_enforcement              = var.ssl_enforcement
+  ssl_enforcement_enabled      = var.ssl_enforcement_enabled
 
   tags = var.tags
 }

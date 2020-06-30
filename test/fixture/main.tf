@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 provider "random" {
   version = "~> 2.2"
 }
@@ -19,19 +23,16 @@ module "postgresql" {
 
   server_name  = "postgresql${random_id.name.hex}"
   sku_name     = "GP_Gen5_2"
-  sku_capacity = 2
-  sku_tier     = "GeneralPurpose"
-  sku_family   = "Gen5"
 
   storage_mb            = 5120
   backup_retention_days = 7
-  geo_redundant_backup  = "Disabled"
+  geo_redundant_backup_enabled  = false
 
   administrator_login    = "azureuser"
   administrator_password = "Azur3us3r!"
 
   server_version  = "9.5"
-  ssl_enforcement = "Enabled"
+  ssl_enforcement_enabled = true
 
   db_names     = var.db_names
   db_charset   = "UTF8"
