@@ -92,10 +92,4 @@ func TestTerraformPostgresql(t *testing.T) {
 			t.Fatal("Error: wrong firewall rule id found")
 		}
 	}
-
-	// Verify vnet rules list is empty
-	vnet_rule_ids := terraform.Output(t, terraformOptions, "vnet_rule_ids") 
-	if len (vnet_rule_ids) > 0 {
-		t.Fatal("Error: vnet_rule_ids is not empty!")
-	}
 }
