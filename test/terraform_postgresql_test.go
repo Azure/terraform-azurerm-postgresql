@@ -1,9 +1,10 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/terraform"
 	"strings"
 	"testing"
+
+	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
 func TestTerraformPostgresql(t *testing.T) {

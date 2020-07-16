@@ -99,7 +99,7 @@ We provide a Dockerfile to build a new image based `FROM` the `microsoft/terrafo
 #### Build the image
 
 ```sh
-$ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --build-arg BUILD_ARM_CLIENT_ID=$ARM_CLIENT_ID --build-arg BUILD_ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET --build-arg BUILD_ARM_TENANT_ID=$ARM_TENANT_ID -t azure-posgresql .
+$ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --build-arg BUILD_ARM_CLIENT_ID=$ARM_CLIENT_ID --build-arg BUILD_ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET --build-arg BUILD_ARM_TENANT_ID=$ARM_TENANT_ID -t azure-postgresql .
 ```
 
 #### Run test (Docker)
@@ -107,13 +107,13 @@ $ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --buil
 This runs the local validation:
 
 ```sh
-$ docker run --rm azure-posgresql /bin/bash -c "bundle install && rake build"
+$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake build"
 ```
 
 This runs the full tests (deploys resources into your Azure subscription):
 
 ```sh
-$ docker run --rm azure-posgresql /bin/bash -c "bundle install && rake full"
+$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake full"
 ```
 
 ## License
