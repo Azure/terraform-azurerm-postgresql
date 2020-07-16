@@ -68,7 +68,7 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Terraform **(~> 0.12.6)**](https://www.terraform.io/downloads.html)
+- [Terraform **(~> 0.12.20)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
 
 #### Environment setup
@@ -107,13 +107,13 @@ $ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --buil
 This runs the local validation:
 
 ```sh
-$ docker run --rm azure-compute /bin/bash -c "bundle install && rake build"
+$ docker run --rm azure-posgresql /bin/bash -c "bundle install && rake build"
 ```
 
 This runs the full tests (deploys resources into your Azure subscription):
 
 ```sh
-$$ docker run --rm azure-compute /bin/bash -c "bundle install && rake full"
+$ docker run --rm azure-posgresql /bin/bash -c "bundle install && rake full"
 ```
 
 ## License

@@ -2,7 +2,7 @@
 ARG BUILD_TERRAFORM_VERSION="0.12.20"
 FROM mcr.microsoft.com/terraform-test:${BUILD_TERRAFORM_VERSION}
 
-ARG MODULE_NAME="terraform-azurerm-network-security-group"
+ARG MODULE_NAME="terraform-azurerm-postgresql"
 
 # Declare default build configurations for terraform.
 ARG BUILD_ARM_SUBSCRIPTION_ID=""
