@@ -1,6 +1,6 @@
 # Docker image
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'Ubuntu-latest'
 
 variables:
   image_name: 'terraform-azurerm-postgresql:$(build.buildId)'
