@@ -6,56 +6,53 @@ This Terraform module creates a Azure PostgreSQL Database.
 ## Usage
 
 ```hcl
-resource "azurerm_resource_group" "rg" {
-    name     = "sample-rg"
-    location = "west us 2"
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-rg"
+  location = "West Europe"
 }
 
 module "postgresql" {
-    source              = "Azure/postgresql/azurerm"
+  source = "Azure/postgresql/azurerm"
 
-    resource_group_name = "${azurerm_resource_group.rg.name}"
-    location            = "${azurerm_resource_group.rg.location}"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
 
-    server_name = "sampleserver"
-    sku_name = "GP_Gen5_2"
-    sku_capacity = 2
-    sku_tier = "GeneralPurpose"
-    sku_family = "Gen5"
+  server_name                  = "example-server"
+  sku_name                     = "GP_Gen5_2"
+  storage_mb                   = 5120
+  backup_retention_days        = 7
+  geo_redundant_backup_enabled = false
+  administrator_login          = "login"
+  administrator_password       = "password"
+  server_version               = "9.5"
+  ssl_enforcement_enabled      = true
+  db_names                     = ["my_db1", "my_db2"]
+  db_charset                   = "UTF8"
+  db_collation                 = "English_United States.1252"
 
-    storage_mb = 5120
-    backup_retention_days = 7
-    geo_redundant_backup = "Disabled"
+  firewall_rule_prefix = "firewall-"
+  firewall_rules = [
+    { name = "test1", start_ip = "10.0.0.5", end_ip = "10.0.0.8" },
+    { start_ip = "127.0.0.0", end_ip = "127.0.1.0" },
+  ]
 
-    administrator_login = "login"
-    administrator_password = "password"
+  vnet_rule_name_prefix = "postgresql-vnet-rule-"
+  vnet_rules = [
+    { name = "subnet1", subnet_id = "<subnet_id>" }
+  ]
 
-    server_version = "9.5"
-    ssl_enforcement = "Enabled"
+  tags = {
+    Environment = "Production",
+    CostCenter  = "Contoso IT",
+  }
 
-    db_names = ["my_db1", "my_db2"]
-    db_charset = "UTF8"
-    db_collation = "English_United States.1252"
-
-    firewall_rule_prefix = "firewall-"
-    firewall_rules = [
-        {name="test1", start_ip="10.0.0.5", end_ip="10.0.0.8"},
-        {start_ip="127.0.0.0", end_ip="127.0.1.0"},
-    ]
-
-    vnet_rule_name_prefix = "postgresql-vnet-rule-"
-    vnet_rules = [
-        {name="subnet1", subnet_id="<subnet_id>"}
-    ]
-
-    tags = {
-        Environment = "Production",
-        CostCenter = "Contoso IT",
-    }
-
-    postgresql_configurations = {
-        backslash_quote = "on",
-    }
+  postgresql_configurations = {
+    backslash_quote = "on",
+  }
 }
 ```
 
@@ -71,7 +68,7 @@ We provide 2 ways to build, run, and test the module on a local development mach
 
 #### Prerequisites
 
-- [Terraform **(~> 0.11.7)**](https://www.terraform.io/downloads.html)
+- [Terraform **(~> 0.12.20)**](https://www.terraform.io/downloads.html)
 - [Golang **(~> 1.10.3)**](https://golang.org/dl/)
 
 #### Environment setup
@@ -102,7 +99,7 @@ We provide a Dockerfile to build a new image based `FROM` the `microsoft/terrafo
 #### Build the image
 
 ```sh
-$ docker build -t azure-postgresql-module .
+$ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --build-arg BUILD_ARM_CLIENT_ID=$ARM_CLIENT_ID --build-arg BUILD_ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET --build-arg BUILD_ARM_TENANT_ID=$ARM_TENANT_ID -t azure-postgresql .
 ```
 
 #### Run test (Docker)
@@ -110,13 +107,13 @@ $ docker build -t azure-postgresql-module .
 This runs the local validation:
 
 ```sh
-$ docker run --rm azure-postgresql-module /bin/bash -c "./test.sh validate"
+$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake build"
 ```
 
 This runs the full tests (deploys resources into your Azure subscription):
 
 ```sh
-$ docker run -e "ARM_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID" -e "ARM_CLIENT_ID=$AZURE_CLIENT_ID" -e "ARM_CLIENT_SECRET=$AZURE_CLIENT_SECRET" -e "ARM_TENANT_ID=$AZURE_TENANT_ID" -e "ARM_TEST_LOCATION=WestUS2" -e "ARM_TEST_LOCATION_ALT=EastUS" --rm azure-postgresql-module bash -c "./test.sh full"
+$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake full"
 ```
 
 ## License

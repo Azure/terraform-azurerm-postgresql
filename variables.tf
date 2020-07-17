@@ -12,27 +12,12 @@ variable "server_name" {
 
 variable "sku_name" {
   description = "Specifies the SKU Name for this PostgreSQL Server. The name of the SKU, follows the tier + family + cores pattern (e.g. B_Gen4_1, GP_Gen5_8)."
-  default     = "B_Gen4_2"
-}
-
-variable "sku_capacity" {
-  description = "The scale up/out capacity, representing server's compute units"
-  default     = "2"
-}
-
-variable "sku_tier" {
-  description = "The tier of the particular SKU. Possible values are Basic, GeneralPurpose, and MemoryOptimized."
-  default     = "Basic"
-}
-
-variable "sku_family" {
-  description = " The family of hardware Gen4 or Gen5."
-  default     = "Gen4"
+  default     = "GP_Gen5_4"
 }
 
 variable "storage_mb" {
   description = "Max storage allowed for a server. Possible values are between 5120 MB(5GB) and 1048576 MB(1TB) for the Basic SKU and between 5120 MB(5GB) and 4194304 MB(4TB) for General Purpose/Memory Optimized SKUs."
-  default     = 5120
+  default     = 102400
 }
 
 variable "backup_retention_days" {
@@ -40,9 +25,9 @@ variable "backup_retention_days" {
   default     = 7
 }
 
-variable "geo_redundant_backup" {
+variable "geo_redundant_backup_enabled" {
   description = "Enable Geo-redundant or not for server backup. Valid values for this property are Enabled or Disabled, not supported for the basic tier."
-  default     = "Disabled"
+  default     = false
 }
 
 variable "administrator_login" {
@@ -58,9 +43,9 @@ variable "server_version" {
   default     = "9.5"
 }
 
-variable "ssl_enforcement" {
+variable "ssl_enforcement_enabled" {
   description = "Specifies if SSL should be enforced on connections. Possible values are Enabled and Disabled."
-  default     = "Enabled"
+  default     = true
 }
 
 variable "db_names" {
@@ -100,12 +85,13 @@ variable "vnet_rules" {
 
 variable "tags" {
   description = "A map of tags to set on every taggable resources. Empty by default."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "postgresql_configurations" {
   description = "A map with PostgreSQL configurations to enable."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
+
