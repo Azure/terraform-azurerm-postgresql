@@ -1,9 +1,9 @@
-# Docker image
+# Azure pipeline for Terraform Postgresql module
 pool:
-  vmImage: 'Ubuntu-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
-  image_name: 'terraform-azurerm-postgresql:$(build.buildId)'
+  image_name: terraform-azurerm-postgresql:$(build.buildId)
   terraform_version: 0.12.20
 
 steps:
