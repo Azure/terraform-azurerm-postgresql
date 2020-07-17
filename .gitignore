@@ -1,3 +1,8 @@
+# Variable files
+terraform.tfvars
+
+### https://raw.github.com/github/gitignore/abad92dac5a4306f72242dae3bca6e277bce3615/Terraform.gitignore
+
 # Compiled files
 *.tfstate
 *.tfstate.backup
@@ -9,5 +14,24 @@ vendor/
 .terraform/
 .test-data/
 
-# Package version lock files
+### https://raw.github.com/github/gitignore/abad92dac5a4306f72242dae3bca6e277bce3615/Global/Vim.gitignore
+
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+
+# IDE configs
+.idea
+
+# Ruby download package lock file.
 Gemfile.lock
+
+# Test Kitchen files.
+.kitchen
