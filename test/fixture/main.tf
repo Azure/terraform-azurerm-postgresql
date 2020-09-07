@@ -57,5 +57,7 @@ module "postgresql" {
   vnet_rules = [
     { name = "subnet1", subnet_id = azurerm_subnet.test.id }
   ]
+
+  depends_on = [azurerm_resource_group.test]
 }
 
