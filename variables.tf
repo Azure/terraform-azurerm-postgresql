@@ -59,6 +59,12 @@ variable "ssl_enforcement_enabled" {
   default     = true
 }
 
+variable "public_network_access_enabled" {
+  description = "Whether or not public network access is allowed for this server. Possible values are Enabled and Disabled."
+  type        = bool
+  default     = true
+}
+
 variable "db_names" {
   description = "The list of names of the PostgreSQL Database, which needs to be a valid PostgreSQL identifier. Changing this forces a new resource to be created."
   type        = list(string)
