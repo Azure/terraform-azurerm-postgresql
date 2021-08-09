@@ -24,7 +24,9 @@ output "server_id" {
 
 output "database_ids" {
   description = "The list of all database resource ids"
-  value       = [azurerm_postgresql_database.dbs.*.id]
+  value = toset([
+    for db in azurerm_postgresql_database.dbs : db.id
+  ])
 }
 
 output "firewall_rule_ids" {
