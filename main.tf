@@ -20,7 +20,7 @@ resource "azurerm_postgresql_server" "server" {
 
 resource "azurerm_postgresql_database" "dbs" {
   for_each            = toset(var.db_names)
-  name                = var.db_names[count.index]
+  name                = var.db_names[each.key]
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
   charset             = var.db_charset
@@ -29,19 +29,19 @@ resource "azurerm_postgresql_database" "dbs" {
 
 resource "azurerm_postgresql_firewall_rule" "firewall_rules" {
   for_each            = toset(var.firewall_rules)
-  name                = format("%s%s", var.firewall_rule_prefix, lookup(var.firewall_rules[count.index], "name", count.index))
+  name                = format("%s%s", var.firewall_rule_prefix, lookup(var.firewall_rules[each.key], "name", each.key))
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
-  start_ip_address    = var.firewall_rules[count.index]["start_ip"]
-  end_ip_address      = var.firewall_rules[count.index]["end_ip"]
+  start_ip_address    = var.firewall_rules[each.key]["start_ip"]
+  end_ip_address      = var.firewall_rules[each.key]["end_ip"]
 }
 
 resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
   for_each            = toset(var.vnet_rules)
-  name                = format("%s%s", var.vnet_rule_name_prefix, lookup(var.vnet_rules[count.index], "name", count.index))
+  name                = format("%s%s", var.vnet_rule_name_prefix, lookup(var.vnet_rules[each.key], "name", each.key))
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
-  subnet_id           = var.vnet_rules[count.index]["subnet_id"]
+  subnet_id           = var.vnet_rules[each.key]["subnet_id"]
 }
 
 resource "azurerm_postgresql_configuration" "db_configs" {
@@ -49,7 +49,7 @@ resource "azurerm_postgresql_configuration" "db_configs" {
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
 
-  name  = element(keys(var.postgresql_configurations), count.index)
-  value = element(values(var.postgresql_configurations), count.index)
+  name  = element(keys(var.postgresql_configurations), each.key)
+  value = element(values(var.postgresql_configurations), each.key)
 }
 
