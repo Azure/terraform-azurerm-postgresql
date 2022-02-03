@@ -25,6 +25,12 @@ variable "storage_mb" {
   default     = 102400
 }
 
+variable "auto_grow_enabled" {
+  description = "Enable or disable incremental automatic growth of database space."
+  type        = bool
+  default     = false
+}
+
 variable "backup_retention_days" {
   description = "Backup retention days for the server, supported values are between 7 and 35 days."
   type        = number
