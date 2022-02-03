@@ -1,3 +1,9 @@
+variable "auto_grow_enabled" {
+  description = "Enable or disable incremental automatic growth of database space."
+  type        = bool
+  default     = false
+}
+
 variable "administrator_login" {
   description = "The Administrator Login for the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
