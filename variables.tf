@@ -1,9 +1,3 @@
-variable "auto_grow_enabled" {
-  description = "Enable or disable incremental automatic growth of database space."
-  type        = bool
-  default     = false
-}
-
 variable "administrator_login" {
   description = "The Administrator Login for the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
@@ -27,6 +21,12 @@ variable "resource_group_name" {
 variable "server_name" {
   description = "Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created."
   type        = string
+}
+
+variable "auto_grow_enabled" {
+  description = "(Optional) Enable or disable incremental automatic growth of database space. Storage auto-grow prevents your server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without impacting the workload. The default value if not explicitly specified is `true`."
+  type        = bool
+  default     = true
 }
 
 variable "backup_retention_days" {
