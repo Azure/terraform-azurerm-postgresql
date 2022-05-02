@@ -59,6 +59,12 @@ variable "ssl_enforcement_enabled" {
   default     = true
 }
 
+variable "ssl_minimal_tls_version_enforced" {
+  description = "The minimum TLS version to support on the sever. Possible values are TLSEnforcementDisabled, TLS1_0, TLS1_1, and TLS1_2. Defaults to TLSEnforcementDisabled. Must be provided if ssl_enforcement_enabled is set to false."
+  type        = string
+  default     = "TLSEnforcementDisabled"
+}
+
 variable "public_network_access_enabled" {
   description = "Whether or not public network access is allowed for this server. Possible values are Enabled and Disabled."
   type        = bool
