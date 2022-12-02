@@ -10,8 +10,8 @@ import (
 func TestTerraformPostgresql(t *testing.T) {
 	t.Parallel()
 
-	var fwRulePrefix = "firewall"
-	var fwRules = []map[string]string{{"name": "test1", "start_ip": "10.0.0.5", "end_ip": "10.0.0.8"}}
+	fwRulePrefix := "firewall"
+	fwRules := []map[string]string{{"name": "test1", "start_ip": "10.0.0.5", "end_ip": "10.0.0.8"}}
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "./fixture",
@@ -28,7 +28,7 @@ func TestTerraformPostgresql(t *testing.T) {
 	firewall_rule_ids := terraform.Output(t, terraformOptions, "firewall_rule_ids")
 	for _, rule := range fwRules {
 		name := fwRulePrefix + rule["name"]
-		if strings.Index(firewall_rule_ids, name) == -1 {
+		if !strings.Contains(firewall_rule_ids, name) {
 			t.Fatal("Error: wrong firewall rule id found")
 		}
 	}

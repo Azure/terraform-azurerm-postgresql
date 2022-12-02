@@ -107,10 +107,11 @@ func DBQueryWithCustomValidation(t *testing.T, db *sql.DB, command string, valid
 // DBQueryWithCustomValidationE queries from database and validate whether the result meets the requirement. If not, return an error.
 func DBQueryWithCustomValidationE(t *testing.T, db *sql.DB, command string, validateResponse func(*sql.Rows) bool) error {
 	rows, err := DBQueryE(t, db, command)
-	defer rows.Close()
 	if err != nil {
 		return err
 	}
+
+	defer rows.Close()
 	if !validateResponse(rows) {
 		return ValidationFunctionFailed{command}
 	}
