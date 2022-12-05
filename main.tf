@@ -14,7 +14,20 @@ resource "azurerm_postgresql_server" "server" {
   ssl_minimal_tls_version_enforced  = var.ssl_minimal_tls_version_enforced
   storage_mb                        = var.storage_mb
   tags                              = var.tags
-  threat_detection_policy           = var.thread_detection_policy
+
+  dynamic "threat_detection_policy" {
+    for_each = var.threat_detection_policy != null ? ["threat_detection_policy"] : []
+
+    content {
+      disabled_alerts            = var.threat_detection_policy.disabled_alerts
+      email_account_admins       = var.threat_detection_policy.email_account.admins
+      email_addresses            = var.threat_detection_policy.email_addresses
+      enabled                    = var.threat_detection_policy.enabled
+      retention_days             = var.threat_detection_policy.retention_days
+      storage_account_access_key = var.threat_detection_policy.storage_account_access_key
+      storage_endpoint           = var.threat_detection_policy.storage_endpoint
+    }
+  }
 }
 
 resource "azurerm_postgresql_database" "dbs" {
@@ -31,7 +44,7 @@ resource "azurerm_postgresql_firewall_rule" "firewall_rules" {
   count = length(var.firewall_rules)
 
   end_ip_address      = var.firewall_rules[count.index]["end_ip"]
-  name                = format("%!s(MISSING)%!s(MISSING)", var.firewall_rule_prefix, lookup(var.firewall_rules[count.index], "name", count.index))
+  name                = format("%s%s", var.firewall_rule_prefix, lookup(var.firewall_rules[count.index], "name", count.index))
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
   start_ip_address    = var.firewall_rules[count.index]["start_ip"]
@@ -40,7 +53,7 @@ resource "azurerm_postgresql_firewall_rule" "firewall_rules" {
 resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
   count = length(var.vnet_rules)
 
-  name                = format("%!s(MISSING)%!s(MISSING)", var.vnet_rule_name_prefix, lookup(var.vnet_rules[count.index], "name", count.index))
+  name                = format("%s%s", var.vnet_rule_name_prefix, lookup(var.vnet_rules[count.index], "name", count.index))
   resource_group_name = var.resource_group_name
   server_name         = azurerm_postgresql_server.server.name
   subnet_id           = var.vnet_rules[count.index]["subnet_id"]

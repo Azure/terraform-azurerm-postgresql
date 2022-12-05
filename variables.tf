@@ -119,7 +119,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "thread_detection_policy" {
+variable "threat_detection_policy" {
   description = "Threat detection policy configuration, known in the API as Server Security Alerts Policy"
   type        = map(any)
   default = {

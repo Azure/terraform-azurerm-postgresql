@@ -11,7 +11,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "example-rg"
+  name     = "examples-rg"
   location = "West Europe"
 }
 
@@ -21,7 +21,7 @@ module "postgresql" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
 
-  server_name                   = "example-server"
+  server_name                   = "examples-server"
   sku_name                      = "GP_Gen5_2"
   storage_mb                    = 5120
   backup_retention_days         = 7
@@ -67,7 +67,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "example-rg"
+  name     = "examples-rg"
   location = "West Europe"
 }
 
@@ -77,7 +77,7 @@ module "postgresql" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
 
-  server_name                   = "example-server"
+  server_name                   = "examples-server"
   sku_name                      = "GP_Gen5_2"
   storage_mb                    = 5120
   backup_retention_days         = 7
@@ -244,7 +244,7 @@ No modules.
 | <a name="input_ssl_minimal_tls_version_enforced"></a> [ssl\_minimal\_tls\_version\_enforced](#input\_ssl\_minimal\_tls\_version\_enforced) | The minimum TLS version to support on the sever                                                                                                                                                                                | `string`            | `"TLS1_2"`                             |    no    |
 | <a name="input_storage_mb"></a> [storage\_mb](#input\_storage\_mb)                                                                         | Max storage allowed for a server. Possible values are between 5120 MB(5GB) and 1048576 MB(1TB) for the Basic SKU and between 5120 MB(5GB) and 4194304 MB(4TB) for General Purpose/Memory Optimized SKUs.                       | `number`            | `102400`                               |    no    |
 | <a name="input_tags"></a> [tags](#input\_tags)                                                                                             | A map of tags to set on every taggable resources. Empty by default.                                                                                                                                                            | `map(string)`       | `{}`                                   |    no    |
-| <a name="input_thread_detection_policy"></a> [thread\_detection\_policy](#input\_thread\_detection\_policy)                                | Threat detection policy configuration, known in the API as Server Security Alerts Policy                                                                                                                                       | `map(any)`          | <pre>{<br>  "enabled": true<br>}</pre> |    no    |
+| <a name="input_threat_detection_policy"></a> [threat\_detection\_policy](#input\_threat\_detection\_policy)                                | Threat detection policy configuration, known in the API as Server Security Alerts Policy                                                                                                                                       | `map(any)`          | <pre>{<br>  "enabled": true<br>}</pre> |    no    |
 | <a name="input_vnet_rule_name_prefix"></a> [vnet\_rule\_name\_prefix](#input\_vnet\_rule\_name\_prefix)                                    | Specifies prefix for vnet rule names.                                                                                                                                                                                          | `string`            | `"postgresql-vnet-rule-"`              |    no    |
 | <a name="input_vnet_rules"></a> [vnet\_rules](#input\_vnet\_rules)                                                                         | The list of maps, describing vnet rules. Valud map items: name, subnet\_id.                                                                                                                                                    | `list(map(string))` | `[]`                                   |    no    |
 

@@ -157,7 +157,7 @@ enabled = true
 }
 
 rule "terraform_module_version" {
-enabled = true
+enabled = false
 }
 
 rule "terraform_naming_convention" {

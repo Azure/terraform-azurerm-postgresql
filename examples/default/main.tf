@@ -17,7 +17,7 @@ module "postgresql" {
   resource_group_name = azurerm_resource_group.test.name
   location            = azurerm_resource_group.test.location
 
-  server_name            = "test-server"
+  server_name            = "test-server-postgresql"
   administrator_login    = "login"
-  administrator_password = "password"
+  administrator_password = "PasSw0rd!"
 }
