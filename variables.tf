@@ -121,7 +121,17 @@ variable "tags" {
 
 variable "threat_detection_policy" {
   description = "Threat detection policy configuration, known in the API as Server Security Alerts Policy"
-  type        = map(any)
+  type = object(
+    {
+      enabled                    = bool
+      disabled_alerts            = optional(set(string))
+      email_account_admins       = optional(string)
+      email_addresses            = optional(set(string))
+      retention_days             = optional(number)
+      storage_account_access_key = optional(string)
+      storage_endpoint           = optional(string)
+    }
+  )
   default = {
     enabled = true
   }

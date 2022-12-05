@@ -20,7 +20,7 @@ resource "azurerm_postgresql_server" "server" {
 
     content {
       disabled_alerts            = var.threat_detection_policy.disabled_alerts
-      email_account_admins       = var.threat_detection_policy.email_account.admins
+      email_account_admins       = var.threat_detection_policy.email_account_admins
       email_addresses            = var.threat_detection_policy.email_addresses
       enabled                    = var.threat_detection_policy.enabled
       retention_days             = var.threat_detection_policy.retention_days
