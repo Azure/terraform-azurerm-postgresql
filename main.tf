@@ -24,7 +24,7 @@ resource "azurerm_postgresql_server" "server" {
       email_addresses            = var.threat_detection_policy.email_addresses
       enabled                    = var.threat_detection_policy.enabled
       retention_days             = var.threat_detection_policy.retention_days
-      storage_account_access_key = var.threat_detection_policy.storage_account_access_key
+      storage_account_access_key = var.threat_detection_policy.storage_account_access_key.key
       storage_endpoint           = var.threat_detection_policy.storage_endpoint
     }
   }

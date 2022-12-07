@@ -12,7 +12,7 @@ source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 
 plugin "basic-ext" {
 enabled     = true
-version     = "0.2.1"
+version     = "0.3.1"
 source      = "github.com/Azure/tflint-ruleset-basic-ext"
 signing_key = <<-KEY
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -157,7 +157,7 @@ enabled = true
 }
 
 rule "terraform_module_version" {
-enabled = false
+enabled = true
 }
 
 rule "terraform_naming_convention" {
@@ -194,6 +194,10 @@ enabled = true
 
 rule "terraform_locals_order" {
 enabled = true
+}
+
+rule "terraform_variable_nullable_false" {
+  enabled = true
 }
 
 rule "terraform_output_order" {
