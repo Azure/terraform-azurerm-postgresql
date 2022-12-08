@@ -3,6 +3,7 @@ module posgresql
 go 1.13
 
 require (
-	github.com/gruntwork-io/terratest v0.28.7
-	github.com/lib/pq v1.7.0
+	github.com/Azure/terraform-module-test-helper v0.3.0
+	github.com/gruntwork-io/terratest v0.40.3
+	github.com/stretchr/testify v1.8.1
 )
