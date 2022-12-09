@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Remove deprecated files [\#40](https://github.com/Azure/terraform-azurerm-postgresql/pull/40) ([lonegunmanb](https://github.com/lonegunmanb))
 - Add CI pipeline [\#38](https://github.com/Azure/terraform-azurerm-postgresql/pull/38) ([jiaweitao001](https://github.com/jiaweitao001))
 - Add public\_network\_access\_enabled variable [\#26](https://github.com/Azure/terraform-azurerm-postgresql/pull/26) ([kcirrr](https://github.com/kcirrr))
 - Docker fix [\#24](https://github.com/Azure/terraform-azurerm-postgresql/pull/24) ([yupwei68](https://github.com/yupwei68))
