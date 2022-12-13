@@ -9,19 +9,59 @@
 - Add public\_network\_access\_enabled variable [\#26](https://github.com/Azure/terraform-azurerm-postgresql/pull/26) ([kcirrr](https://github.com/kcirrr))
 - Docker fix [\#24](https://github.com/Azure/terraform-azurerm-postgresql/pull/24) ([yupwei68](https://github.com/yupwei68))
 - Integration of Terramodtest 0.8.0 [\#23](https://github.com/Azure/terraform-azurerm-postgresql/pull/23) ([yupwei68](https://github.com/yupwei68))
+
+## [2.1.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/2.1.0) (2020-09-07)
+
+**Merged pull requests:**
+
 - Terraform 0.13 upgrade [\#21](https://github.com/Azure/terraform-azurerm-postgresql/pull/21) ([yupwei68](https://github.com/yupwei68))
+
+## [2.0.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/2.0.0) (2020-07-17)
+
+**Merged pull requests:**
+
 - Terraform Version upgrade to v0.12 [\#20](https://github.com/Azure/terraform-azurerm-postgresql/pull/20) ([yupwei68](https://github.com/yupwei68))
+
+## [1.4.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/1.4.0) (2019-03-20)
+
+**Merged pull requests:**
+
 - Add `azurerm_postgresql_configuration` resources to the module [\#14](https://github.com/Azure/terraform-azurerm-postgresql/pull/14) ([Shr3ps](https://github.com/Shr3ps))
 - Add tags variable [\#13](https://github.com/Azure/terraform-azurerm-postgresql/pull/13) ([Shr3ps](https://github.com/Shr3ps))
 - Update pipeline [\#12](https://github.com/Azure/terraform-azurerm-postgresql/pull/12) ([logachev](https://github.com/logachev))
 - Fix resource group name in readme [\#11](https://github.com/Azure/terraform-azurerm-postgresql/pull/11) ([logachev](https://github.com/logachev))
 - Kiril/pipeline [\#10](https://github.com/Azure/terraform-azurerm-postgresql/pull/10) ([logachev](https://github.com/logachev))
 - Add badge status & update pipeline [\#9](https://github.com/Azure/terraform-azurerm-postgresql/pull/9) ([logachev](https://github.com/logachev))
+
+## [v1.4](https://github.com/Azure/terraform-azurerm-postgresql/tree/v1.4) (2018-10-11)
+
+**Merged pull requests:**
+
 - Create RG in example [\#8](https://github.com/Azure/terraform-azurerm-postgresql/pull/8) ([logachev](https://github.com/logachev))
 - Rename variables in example [\#7](https://github.com/Azure/terraform-azurerm-postgresql/pull/7) ([logachev](https://github.com/logachev))
+
+## [v1.3](https://github.com/Azure/terraform-azurerm-postgresql/tree/v1.3) (2018-10-11)
+
+**Merged pull requests:**
+
 - Update example [\#6](https://github.com/Azure/terraform-azurerm-postgresql/pull/6) ([logachev](https://github.com/logachev))
+
+## [v1.2](https://github.com/Azure/terraform-azurerm-postgresql/tree/v1.2) (2018-10-11)
+
+**Merged pull requests:**
+
 - Rename version [\#5](https://github.com/Azure/terraform-azurerm-postgresql/pull/5) ([logachev](https://github.com/logachev))
+
+## [v1.01](https://github.com/Azure/terraform-azurerm-postgresql/tree/v1.01) (2018-10-11)
+
+**Merged pull requests:**
+
 - update readme [\#4](https://github.com/Azure/terraform-azurerm-postgresql/pull/4) ([logachev](https://github.com/logachev))
+
+## [v1.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/v1.0) (2018-10-11)
+
+**Merged pull requests:**
+
 -  Remove ruby & cleanup dockerfile [\#3](https://github.com/Azure/terraform-azurerm-postgresql/pull/3) ([logachev](https://github.com/logachev))
 - Postgresql module + tests [\#2](https://github.com/Azure/terraform-azurerm-postgresql/pull/2) ([logachev](https://github.com/logachev))
 
