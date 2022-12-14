@@ -1,4 +1,3 @@
-[![Build Status](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_apis/build/status/Azure.terraform-azurerm-postgresql)](https://dev.azure.com/azurerm-terraform-test/azurerm-terraform-modules/_build/latest?definitionId=2)
 ## Create an Azure PostgreSQL Database
 
 This Terraform module creates a Azure PostgreSQL Database.
@@ -113,65 +112,80 @@ module "postgresql" {
 }
 ```
 
-## Test
+## Pre-Commit & Pr-Check & Test
 
 ### Configurations
 
 - [Configure Terraform for Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/terraform-install-configure)
 
-We provide 2 ways to build, run, and test the module on a local development machine.  [Native (Mac/Linux)](#native-maclinux) or [Docker](#docker).
+We assumed that you have setup service principal's credentials in your environment variables like below:
 
-### Native(Mac/Linux)
-
-#### Prerequisites
-
-- [Terraform **(~> 0.12.20)**](https://www.terraform.io/downloads.html)
-- [Golang **(~> 1.10.3)**](https://golang.org/dl/)
-
-#### Environment setup
-
-We provide simple script to quickly set up module development environment:
-
-```sh
-$ curl -sSL https://raw.githubusercontent.com/Azure/terramodtest/master/tool/env_setup.sh | sudo bash
+```shell
+export ARM_SUBSCRIPTION_ID="<azure_subscription_id>"
+export ARM_TENANT_ID="<azure_subscription_tenant_id>"
+export ARM_CLIENT_ID="<service_principal_appid>"
+export ARM_CLIENT_SECRET="<service_principal_password>"
 ```
 
-#### Run test
+On Windows Powershell:
 
-Then simply run it in local shell:
-
-```sh
-$ cd $GOPATH/src/{directory_name}/
-$ ./test.sh full
+```shell
+$env:ARM_SUBSCRIPTION_ID="<azure_subscription_id>"
+$env:ARM_TENANT_ID="<azure_subscription_tenant_id>"
+$env:ARM_CLIENT_ID="<service_principal_appid>"
+$env:ARM_CLIENT_SECRET="<service_principal_password>"
 ```
 
-### Docker
+We provide a docker image to run the pre-commit checks and tests for you: `mcr.microsoft.com/azterraform:latest`
 
-We provide a Dockerfile to build a new image based `FROM` the `microsoft/terraform-test` Docker hub image which adds additional tools / packages specific for this module (see Custom Image section).  Alternatively use only the `microsoft/terraform-test` Docker hub image [by using these instructions](https://github.com/Azure/terraform-test).
+To run the pre-commit task, we can run the following command:
+
+```shell
+$ docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make pre-commit
+```
+
+On Windows Powershell:
+
+```shell
+$ docker run --rm -v ${pwd}:/src -w /src mcr.microsoft.com/azterraform:latest make pre-commit
+```
+
+In pre-commit task, we will:
+
+1. Run `terraform fmt -recursive` command for your Terraform code.
+2. Run `terrafmt fmt -f` command for markdown files and go code files to ensure that the Terraform code embedded in these files are well formatted.
+3. Run `go mod tidy` and `go mod vendor` for test folder to ensure that all the dependencies have been synced.
+4. Run `gofmt` for all go code files.
+5. Run `gofumpt` for all go code files.
+6. Run `terraform-docs` on `README.md` file, then run `markdown-table-formatter` to format markdown tables in `README.md`.
+
+Then we can run the pr-check task to check whether our code meets our pipeline's requirement(We strongly recommend you run the following command before you commit):
+
+```shell
+$ docker run --rm -v $(pwd):/src -w /src -e TFLINT_CONFIG=.tflint_alt.hcl mcr.microsoft.com/azterraform:latest make pr-check
+```
+
+On Windows Powershell:
+
+```shell
+$ docker run --rm -v ${pwd}:/src -w /src -e TFLINT_CONFIG=.tflint_alt.hcl mcr.microsoft.com/azterraform:latest make pr-check
+```
+
+To run the e2e-test, we can run the following command:
+
+```text
+docker run --rm -v $(pwd):/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -e ARM_CLIENT_ID -e ARM_CLIENT_SECRET mcr.microsoft.com/azterraform:latest make e2e-test
+```
+
+On Windows Powershell:
+
+```text
+docker run --rm -v ${pwd}:/src -w /src -e ARM_SUBSCRIPTION_ID -e ARM_TENANT_ID -e ARM_CLIENT_ID -e ARM_CLIENT_SECRET mcr.microsoft.com/azterraform:latest make e2e-test
+```
 
 #### Prerequisites
 
 - [Docker](https://www.docker.com/community-edition#/download)
-
-#### Build the image
-
-```sh
-$ docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID --build-arg BUILD_ARM_CLIENT_ID=$ARM_CLIENT_ID --build-arg BUILD_ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET --build-arg BUILD_ARM_TENANT_ID=$ARM_TENANT_ID -t azure-postgresql .
-```
-
-#### Run test (Docker)
-
-This runs the local validation:
-
-```sh
-$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake build"
-```
-
-This runs the full tests (deploys resources into your Azure subscription):
-
-```sh
-$ docker run --rm azure-postgresql /bin/bash -c "bundle install && rake full"
-```
 
 ## License
 
