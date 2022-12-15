@@ -28,7 +28,7 @@ body:
     id: config
     attributes:
       label: Potential Terraform Configuration
-      description: Please provide an examples of what the enhancement could look like on this Terraform module.
+      description: Please provide an example of what the enhancement could look like on this Terraform module.
       render: hcl
   - type: textarea
     id: references
