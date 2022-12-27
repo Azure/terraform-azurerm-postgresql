@@ -11,12 +11,12 @@ output "administrator_password" {
 
 output "database_ids" {
   description = "The list of all database resource ids"
-  value       = [azurerm_postgresql_database.dbs.*.id]
+  value       = [azurerm_postgresql_database.dbs[*].id]
 }
 
 output "firewall_rule_ids" {
   description = "The list of all firewall rule resource ids"
-  value       = [azurerm_postgresql_firewall_rule.firewall_rules.*.id]
+  value       = [azurerm_postgresql_firewall_rule.firewall_rules[*].id]
 }
 
 output "server_fqdn" {
@@ -36,5 +36,5 @@ output "server_name" {
 
 output "vnet_rule_ids" {
   description = "The list of all vnet rule resource ids"
-  value       = [azurerm_postgresql_virtual_network_rule.vnet_rules.*.id]
+  value       = [azurerm_postgresql_virtual_network_rule.vnet_rules[*].id]
 }
