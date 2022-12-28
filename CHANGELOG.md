@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Exposing the psqlserver modules auto grow feature [\#44](https://github.com/Azure/terraform-azurerm-postgresql/pull/44) ([jiaweitao001](https://github.com/jiaweitao001))
 - Disallow legacy dot index syntax [\#43](https://github.com/Azure/terraform-azurerm-postgresql/pull/43) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/gruntwork-io/terratest from 0.41.6 to 0.41.7 in /test [\#41](https://github.com/Azure/terraform-azurerm-postgresql/pull/41) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Remove deprecated files [\#40](https://github.com/Azure/terraform-azurerm-postgresql/pull/40) ([lonegunmanb](https://github.com/lonegunmanb))
