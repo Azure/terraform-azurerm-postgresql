@@ -90,7 +90,7 @@ variable "public_network_access_enabled" {
 }
 
 variable "server_version" {
-  description = "Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10.0` and `11`. Changing this forces a new resource to be created."
+  description = "Specifies the version of PostgreSQL to use. Valid values are `9.5`, `9.6`, `10.0`, `10.2` and `11`. Changing this forces a new resource to be created."
   type        = string
   default     = "9.5"
 }
