@@ -5,6 +5,7 @@ variable "administrator_login" {
 
 variable "administrator_password" {
   description = "The Password associated with the administrator_login for the PostgreSQL Server."
+  sensitive   = true
   type        = string
 }
 
@@ -108,7 +109,7 @@ variable "ssl_enforcement_enabled" {
 }
 
 variable "ssl_minimal_tls_version_enforced" {
-  description = "The minimum TLS version to support on the sever"
+  description = "(Optional) The minimum TLS version to support on the sever. Possible values are `TLSEnforcementDisabled`, `TLS1_0`, `TLS1_1`, and `TLS1_2`. Defaults to `TLS1_2`. `ssl_minimal_tls_version_enforced` must be set to `TLSEnforcementDisabled` when `ssl_enforcement_enabled` is set to `false`."
   type        = string
   default     = "TLS1_2"
 }
