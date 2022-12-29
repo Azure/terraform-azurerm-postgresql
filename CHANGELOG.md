@@ -4,6 +4,8 @@
 
 **Merged pull requests:**
 
+- Update desciption for `ssl_minimal_tls_version_enforced` [\#47](https://github.com/Azure/terraform-azurerm-postgresql/pull/47) ([jiaweitao001](https://github.com/jiaweitao001))
+- Set administrator\_password as sensitive [\#46](https://github.com/Azure/terraform-azurerm-postgresql/pull/46) ([jiaweitao001](https://github.com/jiaweitao001))
 - Exposing the psqlserver modules auto grow feature [\#44](https://github.com/Azure/terraform-azurerm-postgresql/pull/44) ([jiaweitao001](https://github.com/jiaweitao001))
 - Disallow legacy dot index syntax [\#43](https://github.com/Azure/terraform-azurerm-postgresql/pull/43) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/gruntwork-io/terratest from 0.41.6 to 0.41.7 in /test [\#41](https://github.com/Azure/terraform-azurerm-postgresql/pull/41) ([dependabot[bot]](https://github.com/apps/dependabot))
