@@ -109,7 +109,7 @@ variable "ssl_enforcement_enabled" {
 }
 
 variable "ssl_minimal_tls_version_enforced" {
-  description = "The minimum TLS version to support on the sever"
+  description = "The minimum TLS version to support on the sever. `ssl_minimal_tls_version_enforced` must be set to `TLSEnforcementDisabled` when `ssl_enforcement_enabled` is set to `false`."
   type        = string
   default     = "TLS1_2"
 }
