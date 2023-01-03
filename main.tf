@@ -9,6 +9,8 @@ resource "azurerm_postgresql_server" "server" {
   administrator_login_password      = var.administrator_password
   auto_grow_enabled                 = var.auto_grow_enabled
   backup_retention_days             = var.backup_retention_days
+  create_mode                       = var.create_mode
+  creation_source_server_id         = var.creation_source_server_id
   geo_redundant_backup_enabled      = var.geo_redundant_backup_enabled
   infrastructure_encryption_enabled = var.infrastructure_encryption_enabled
   public_network_access_enabled     = var.public_network_access_enabled
