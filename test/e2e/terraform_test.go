@@ -30,3 +30,13 @@ func testExample(t *testing.T, exampleRelativePath string) {
 		assert.Regexp(t, regexp.MustCompile("/subscriptions/.+/resourceGroups/.+/providers/Microsoft.DBforPostgreSQL/servers/.+"), serverId)
 	})
 }
+
+func TestExampleReplica(t *testing.T) {
+	test_helper.RunE2ETest(t, "../../", "examples/replica", terraform.Options{
+		Upgrade: true,
+	}, func(t *testing.T, output test_helper.TerraformOutput) {
+		serverId, ok := output["test_postgresql_replica_server_id"].(string)
+		assert.True(t, ok)
+		assert.Regexp(t, regexp.MustCompile("/subscriptions/.+/resourceGroups/.+/providers/Microsoft.DBforPostgreSQL/servers/.+"), serverId)
+	})
+}
