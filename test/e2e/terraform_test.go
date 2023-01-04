@@ -12,6 +12,7 @@ import (
 func TestExamples(t *testing.T) {
 	examples := []string{
 		"examples/default",
+		"examples/replica",
 	}
 	for _, example := range examples {
 		t.Run(example, func(t *testing.T) {
