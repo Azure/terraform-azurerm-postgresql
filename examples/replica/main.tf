@@ -31,4 +31,7 @@ module "postgresql_replica" {
   server_name            = "test-server-replica-postgresql"
   administrator_login    = "login"
   administrator_password = random_password.password.result
+
+  create_mode               = "Replica"
+  creation_source_server_id = module.postgresql.server_id
 }

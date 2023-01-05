@@ -39,6 +39,7 @@ variable "create_mode" {
   description = "(Optional) The creation mode. Can be used to restore or replicate existing servers. Possible values are `Default`, `Replica`, `GeoRestore`, and `PointInTimeRestore`. Defaults to `Default.`"
   type        = string
   default     = "Default"
+  nullable    = false
 }
 
 variable "creation_source_server_id" {

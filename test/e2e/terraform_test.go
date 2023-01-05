@@ -10,13 +10,14 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-	examples := []string{
-		"examples/default",
-		"examples/replica",
+	testFuncs := map[string]interface{}{
+		"examples/default": testExample,
+		"examples/replica": testExampleReplica,
 	}
-	for _, example := range examples {
-		t.Run(example, func(t *testing.T) {
-			testExample(t, example)
+
+	for k, v := range testFuncs {
+		t.Run(k, func(t *testing.T) {
+			v.(func(t2 *testing.T, output string))(t, k)
 		})
 	}
 }
@@ -31,8 +32,8 @@ func testExample(t *testing.T, exampleRelativePath string) {
 	})
 }
 
-func TestExampleReplica(t *testing.T) {
-	test_helper.RunE2ETest(t, "../../", "examples/replica", terraform.Options{
+func testExampleReplica(t *testing.T, exampleRelativePath string) {
+	test_helper.RunE2ETest(t, "../../", exampleRelativePath, terraform.Options{
 		Upgrade: true,
 	}, func(t *testing.T, output test_helper.TerraformOutput) {
 		serverId, ok := output["test_postgresql_replica_server_id"].(string)
