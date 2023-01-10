@@ -4,14 +4,13 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/terraform"
-
 	test_helper "github.com/Azure/terraform-module-test-helper"
+	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestExamples(t *testing.T) {
-	testFuncs := map[string]interface{}{
+	testFuncs := map[string]func(t2 *testing.T, output test_helper.TerraformOutput){
 		"examples/default": testExampleDefault,
 		"examples/replica": testExampleReplica,
 	}
@@ -20,7 +19,7 @@ func TestExamples(t *testing.T) {
 		t.Run(k, func(t *testing.T) {
 			test_helper.RunE2ETest(t, "../../", k, terraform.Options{
 				Upgrade: true,
-			}, v.(func(*testing.T, test_helper.TerraformOutput)))
+			}, v)
 		})
 	}
 }
