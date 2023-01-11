@@ -36,6 +36,19 @@ variable "backup_retention_days" {
   default     = 7
 }
 
+variable "create_mode" {
+  description = "(Optional) The creation mode. Can be used to restore or replicate existing servers. Possible values are `Default`, `Replica`, `GeoRestore`, and `PointInTimeRestore`. Defaults to `Default.`"
+  type        = string
+  default     = "Default"
+  nullable    = false
+}
+
+variable "creation_source_server_id" {
+  description = "(Optional) For creation modes other than `Default`, the source server ID to use."
+  type        = string
+  default     = null
+}
+
 variable "db_charset" {
   description = "Specifies the Charset for the PostgreSQL Database, which needs to be a valid PostgreSQL Charset. Changing this forces a new resource to be created."
   type        = string

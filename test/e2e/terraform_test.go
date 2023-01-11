@@ -10,22 +10,28 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-	examples := []string{
-		"examples/default",
+	testFuncs := map[string]func(*testing.T, test_helper.TerraformOutput){
+		"examples/default": testExampleDefault,
+		"examples/replica": testExampleReplica,
 	}
-	for _, example := range examples {
-		t.Run(example, func(t *testing.T) {
-			testExample(t, example)
+
+	for k, v := range testFuncs {
+		t.Run(k, func(t *testing.T) {
+			test_helper.RunE2ETest(t, "../../", k, terraform.Options{
+				Upgrade: true,
+			}, v)
 		})
 	}
 }
 
-func testExample(t *testing.T, exampleRelativePath string) {
-	test_helper.RunE2ETest(t, "../../", exampleRelativePath, terraform.Options{
-		Upgrade: true,
-	}, func(t *testing.T, output test_helper.TerraformOutput) {
-		serverId, ok := output["test_postgresql_server_id"].(string)
-		assert.True(t, ok)
-		assert.Regexp(t, regexp.MustCompile("/subscriptions/.+/resourceGroups/.+/providers/Microsoft.DBforPostgreSQL/servers/.+"), serverId)
-	})
+func testExampleDefault(t *testing.T, output test_helper.TerraformOutput) {
+	serverId, ok := output["test_postgresql_server_id"].(string)
+	assert.True(t, ok)
+	assert.Regexp(t, regexp.MustCompile("/subscriptions/.+/resourceGroups/.+/providers/Microsoft.DBforPostgreSQL/servers/.+"), serverId)
+}
+
+func testExampleReplica(t *testing.T, output test_helper.TerraformOutput) {
+	serverId, ok := output["test_postgresql_replica_server_id"].(string)
+	assert.True(t, ok)
+	assert.Regexp(t, regexp.MustCompile("/subscriptions/.+/resourceGroups/.+/providers/Microsoft.DBforPostgreSQL/servers/.+"), serverId)
 }
