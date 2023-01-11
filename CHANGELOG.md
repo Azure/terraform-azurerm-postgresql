@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Add `create_mode` and `creation_source_server_id` to postgresql module [\#49](https://github.com/Azure/terraform-azurerm-postgresql/pull/49) ([jiaweitao001](https://github.com/jiaweitao001))
 - Bump github.com/Azure/terraform-module-test-helper from 0.4.0 to 0.6.0 in /test [\#48](https://github.com/Azure/terraform-azurerm-postgresql/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [3.0.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/3.0.0) (2022-12-30)
