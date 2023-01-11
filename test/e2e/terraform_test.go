@@ -10,7 +10,7 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-	testFuncs := map[string]func(t2 *testing.T, output test_helper.TerraformOutput){
+	testFuncs := map[string]func(*testing.T, test_helper.TerraformOutput){
 		"examples/default": testExampleDefault,
 		"examples/replica": testExampleReplica,
 	}
