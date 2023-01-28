@@ -4,6 +4,8 @@
 
 **Merged pull requests:**
 
+- Adding Microsoft SECURITY.MD [\#52](https://github.com/Azure/terraform-azurerm-postgresql/pull/52) ([microsoft-github-policy-service[bot]](https://github.com/apps/microsoft-github-policy-service))
+- Bump github.com/Azure/terraform-module-test-helper from 0.6.0 to 0.7.1 in /test [\#51](https://github.com/Azure/terraform-azurerm-postgresql/pull/51) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.41.7 to 0.41.9 in /test [\#50](https://github.com/Azure/terraform-azurerm-postgresql/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add `create_mode` and `creation_source_server_id` to postgresql module [\#49](https://github.com/Azure/terraform-azurerm-postgresql/pull/49) ([jiaweitao001](https://github.com/jiaweitao001))
 - Bump github.com/Azure/terraform-module-test-helper from 0.4.0 to 0.6.0 in /test [\#48](https://github.com/Azure/terraform-azurerm-postgresql/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
