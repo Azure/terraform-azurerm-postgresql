@@ -2,6 +2,7 @@ package upgrade
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	test_helper "github.com/Azure/terraform-module-test-helper"
@@ -24,8 +25,13 @@ func TestExampleUpgrade_complete(t *testing.T) {
 			if err != nil {
 				t.FailNow()
 			}
+			retryCfg, err := os.ReadFile("../retryable_errors.hcl.json")
+			if err != nil {
+				t.Fatalf(err.Error())
+			}
 			test_helper.ModuleUpgradeTest(t, "Azure", "terraform-azurerm-postgresql", fmt.Sprintf("examples/%s", f), currentRoot, terraform.Options{
-				Upgrade: true,
+				Upgrade:                  true,
+				RetryableTerraformErrors: test_helper.ReadRetryableErrors(retryCfg, t),
 			}, currentMajorVersion)
 		})
 	}
