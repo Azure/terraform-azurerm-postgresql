@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-postgresql/tree/HEAD)
+
+**Merged pull requests:**
+
+- Add random string to db server name in examples so we can execute tests concurrently [\#56](https://github.com/Azure/terraform-azurerm-postgresql/pull/56) ([lonegunmanb](https://github.com/lonegunmanb))
+
 ## [3.1.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/3.1.0) (2023-01-28)
 
 **Merged pull requests:**
