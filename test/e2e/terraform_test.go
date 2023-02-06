@@ -1,6 +1,7 @@
 package e2e
 
 import (
+	"os"
 	"regexp"
 	"testing"
 
@@ -17,9 +18,15 @@ func TestExamples(t *testing.T) {
 
 	for k, v := range testFuncs {
 		t.Run(k, func(t *testing.T) {
-			test_helper.RunE2ETest(t, "../../", k, terraform.Options{
-				Upgrade: true,
-			}, v)
+			retryCfg, err := os.ReadFile("../retryable_errors.hcl.json")
+			if err != nil {
+				t.Fatalf(err.Error())
+			}
+			opts := terraform.Options{
+				Upgrade:                  true,
+				RetryableTerraformErrors: test_helper.ReadRetryableErrors(retryCfg, t),
+			}
+			test_helper.RunE2ETest(t, "../../", k, opts, v)
 		})
 	}
 }
