@@ -6,6 +6,7 @@
 
 - Enhance generated random password to meet the complexity requirement [\#57](https://github.com/Azure/terraform-azurerm-postgresql/pull/57) ([lonegunmanb](https://github.com/lonegunmanb))
 - Add random string to db server name in examples so we can execute tests concurrently [\#56](https://github.com/Azure/terraform-azurerm-postgresql/pull/56) ([lonegunmanb](https://github.com/lonegunmanb))
+- Bump github.com/Azure/terraform-module-test-helper from 0.7.1 to 0.8.1 in /test [\#55](https://github.com/Azure/terraform-azurerm-postgresql/pull/55) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.41.9 to 0.41.10 in /test [\#54](https://github.com/Azure/terraform-azurerm-postgresql/pull/54) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [3.1.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/3.1.0) (2023-01-28)
