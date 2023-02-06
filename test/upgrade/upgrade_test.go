@@ -2,9 +2,10 @@ package upgrade
 
 import (
 	"fmt"
+	"testing"
+
 	test_helper "github.com/Azure/terraform-module-test-helper"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"testing"
 )
 
 func TestExampleUpgrade_complete(t *testing.T) {
