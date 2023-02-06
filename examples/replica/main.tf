@@ -17,7 +17,7 @@ module "postgresql" {
   resource_group_name = azurerm_resource_group.test.name
   location            = azurerm_resource_group.test.location
 
-  server_name            = "test-server-primary-postgresql"
+  server_name            = "test-pg-primary-${random_id.rg_name.hex}"
   administrator_login    = "login"
   administrator_password = random_password.password.result
 }
@@ -28,7 +28,7 @@ module "postgresql_replica" {
   resource_group_name = azurerm_resource_group.test.name
   location            = azurerm_resource_group.test.location
 
-  server_name            = "test-server-replica-postgresql"
+  server_name            = "test-pg-replica-${random_id.rg_name.hex}"
   administrator_login    = "login"
   administrator_password = random_password.password.result
 
