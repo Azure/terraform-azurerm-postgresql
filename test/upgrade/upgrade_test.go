@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"os"
 	"testing"
+	"time"
 
 	test_helper "github.com/Azure/terraform-module-test-helper"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
-func TestExampleUpgrade_complete(t *testing.T) {
+func TestExampleUpgrade(t *testing.T) {
 	examples := []string{
 		"default",
 		"replica",
@@ -32,6 +33,8 @@ func TestExampleUpgrade_complete(t *testing.T) {
 			test_helper.ModuleUpgradeTest(t, "Azure", "terraform-azurerm-postgresql", fmt.Sprintf("examples/%s", f), currentRoot, terraform.Options{
 				Upgrade:                  true,
 				RetryableTerraformErrors: test_helper.ReadRetryableErrors(retryCfg, t),
+				MaxRetries:               10,
+				TimeBetweenRetries:       time.Minute,
 			}, currentMajorVersion)
 		})
 	}

@@ -4,6 +4,7 @@ import (
 	"os"
 	"regexp"
 	"testing"
+	"time"
 
 	test_helper "github.com/Azure/terraform-module-test-helper"
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -25,6 +26,8 @@ func TestExamples(t *testing.T) {
 			opts := terraform.Options{
 				Upgrade:                  true,
 				RetryableTerraformErrors: test_helper.ReadRetryableErrors(retryCfg, t),
+				MaxRetries:               10,
+				TimeBetweenRetries:       time.Minute,
 			}
 			test_helper.RunE2ETest(t, "../../", k, opts, v)
 		})
