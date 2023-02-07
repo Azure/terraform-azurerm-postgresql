@@ -26,6 +26,12 @@ module "postgresql" {
   administrator_password = random_password.password.result
 }
 
+resource "time_sleep" "sleep" {
+  create_duration = "1m"
+
+  depends_on = [module.postgresql]
+}
+
 module "postgresql_replica" {
   source = "../../"
 
@@ -38,4 +44,6 @@ module "postgresql_replica" {
 
   create_mode               = "Replica"
   creation_source_server_id = module.postgresql.server_id
+
+  depends_on = [time_sleep.sleep]
 }
