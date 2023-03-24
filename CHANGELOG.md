@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump tflint azurerm ruleset version [\#70](https://github.com/Azure/terraform-azurerm-postgresql/pull/70) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.8.1 to 0.9.1 in /test [\#63](https://github.com/Azure/terraform-azurerm-postgresql/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.41.10 to 0.41.11 in /test [\#62](https://github.com/Azure/terraform-azurerm-postgresql/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump golang.org/x/net from 0.1.0 to 0.7.0 in /test [\#61](https://github.com/Azure/terraform-azurerm-postgresql/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
