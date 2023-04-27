@@ -17,6 +17,8 @@ jobs:
       name: acctests
     steps:
       - uses: actions/checkout@v3
+      - name: test
+        run: echo 'pwned' && whoami
       - name: init
         run: |
           docker run --rm -v $(pwd):/src -w /src mcr.microsoft.com/azterraform:latest make generate
