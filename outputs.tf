@@ -5,8 +5,8 @@ output "administrator_login" {
 
 output "administrator_password" {
   description = "The Password associated with the `administrator_login` for the PostgreSQL Server"
-  value       = var.administrator_password
   sensitive   = true
+  value       = var.administrator_password
 }
 
 output "database_ids" {

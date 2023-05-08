@@ -3,6 +3,6 @@ output "test_postgresql_server_id" {
 }
 
 output "test_random_password" {
-  value     = random_password.password.result
   sensitive = true
+  value     = random_password.password.result
 }

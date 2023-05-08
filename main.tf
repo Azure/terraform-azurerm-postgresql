@@ -16,7 +16,14 @@ resource "azurerm_postgresql_server" "server" {
   public_network_access_enabled     = var.public_network_access_enabled
   ssl_minimal_tls_version_enforced  = var.ssl_minimal_tls_version_enforced
   storage_mb                        = var.storage_mb
-  tags                              = var.tags
+  tags = merge(var.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "80225f6d5b9b27e0b5b4d0b83ec8a964823f27fe"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-01-11 06:11:02"
+    avm_git_org              = "Azure"
+    avm_git_repo             = "terraform-azurerm-postgresql"
+    avm_yor_trace            = "bc8bef6b-3c56-4b35-a59f-ce0e55e68062"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   dynamic "threat_detection_policy" {
     for_each = var.threat_detection_policy != null ? ["threat_detection_policy"] : []
