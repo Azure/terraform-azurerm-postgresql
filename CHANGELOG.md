@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump google.golang.org/grpc from 1.50.1 to 1.53.0 in /test [\#86](https://github.com/Azure/terraform-azurerm-postgresql/pull/86) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Correct runner pool name, add tracing tag toggle variables [\#76](https://github.com/Azure/terraform-azurerm-postgresql/pull/76) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump tflint azurerm ruleset version [\#70](https://github.com/Azure/terraform-azurerm-postgresql/pull/70) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.8.1 to 0.9.1 in /test [\#63](https://github.com/Azure/terraform-azurerm-postgresql/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
