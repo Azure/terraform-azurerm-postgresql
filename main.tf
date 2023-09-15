@@ -22,7 +22,7 @@ resource "azurerm_postgresql_server" "server" {
     avm_git_last_modified_at = "2023-01-11 06:11:02"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-postgresql"
-    avm_yor_trace            = "e3954303-4e63-4eb5-bfde-25e92df9afd4"
+    avm_yor_trace            = "068f0430-661b-4d02-8ddb-469acc9f353f"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "server"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
