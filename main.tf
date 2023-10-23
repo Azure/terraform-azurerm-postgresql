@@ -28,7 +28,7 @@ resource "azurerm_postgresql_server" "server" {
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   dynamic "threat_detection_policy" {
-    for_each = var.threat_detection_policy != null ? ["threat_detection_policy"] : []
+    for_each = nonsensitive(var.threat_detection_policy) != null ? ["threat_detection_policy"] : []
 
     content {
       disabled_alerts            = var.threat_detection_policy.disabled_alerts
