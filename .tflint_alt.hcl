@@ -12,7 +12,7 @@ source  = "github.com/terraform-linters/tflint-ruleset-azurerm"
 
 plugin "basic-ext" {
 enabled     = true
-version     = "0.3.1"
+version     = "0.6.0"
 source      = "github.com/Azure/tflint-ruleset-basic-ext"
 signing_key = <<-KEY
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -71,7 +71,7 @@ KEY
 
 plugin "azurerm-ext" {
 enabled     = true
-version     = "0.4.0"
+version     = "0.6.0"
 source      = "github.com/Azure/tflint-ruleset-azurerm-ext"
 signing_key = <<-KEY
 -----BEGIN PGP PUBLIC KEY BLOCK-----
