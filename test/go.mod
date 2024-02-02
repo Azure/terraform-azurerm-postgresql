@@ -1,6 +1,8 @@
 module posgresql
 
-go 1.19
+go 1.21
+
+toolchain go1.21.4
 
 require (
 	github.com/Azure/terraform-module-test-helper v0.17.0
