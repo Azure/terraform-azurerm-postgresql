@@ -5,9 +5,9 @@ resource "random_id" "rg_name" {
 resource "random_password" "password" {
   length      = 20
   min_lower   = 1
-  min_upper   = 1
   min_numeric = 1
   min_special = 1
+  min_upper   = 1
 }
 
 resource "azurerm_resource_group" "test" {

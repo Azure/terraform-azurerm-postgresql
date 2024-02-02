@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Fix dynamic block for threat\_detection\_policy [\#98](https://github.com/Azure/terraform-azurerm-postgresql/pull/98) ([tommygarvin](https://github.com/tommygarvin))
 - Bump github.com/Azure/terraform-module-test-helper from 0.9.1 to 0.16.0 in /test [\#88](https://github.com/Azure/terraform-azurerm-postgresql/pull/88) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump google.golang.org/grpc from 1.50.1 to 1.53.0 in /test [\#86](https://github.com/Azure/terraform-azurerm-postgresql/pull/86) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Correct runner pool name, add tracing tag toggle variables [\#76](https://github.com/Azure/terraform-azurerm-postgresql/pull/76) ([lonegunmanb](https://github.com/lonegunmanb))
