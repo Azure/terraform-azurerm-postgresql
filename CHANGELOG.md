@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Azure/terraform-azurerm-postgresql/tree/HEAD)
+## [3.2.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/3.2.0) (2024-02-02)
 
 **Merged pull requests:**
 
