@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-postgresql/tree/HEAD)
+
+**Merged pull requests:**
+
+- Bump github.com/Azure/terraform-module-test-helper from 0.17.0 to 0.18.0 in /test [\#108](https://github.com/Azure/terraform-azurerm-postgresql/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [3.2.0](https://github.com/Azure/terraform-azurerm-postgresql/tree/3.2.0) (2024-02-02)
 
 **Merged pull requests:**
