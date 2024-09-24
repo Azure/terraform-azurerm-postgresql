@@ -67,3 +67,5 @@ test/go.sum
 
 /TestRecord
 **/TestRecord.md.tmp
+
+tfvmmakefile
