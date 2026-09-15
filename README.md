@@ -1,3 +1,6 @@
+> [!WARNING]
+> This module is no longer maintained, please consider migrating to [Azure Verified Modules](https://aka.ms/avm).
+
 ## Create an Azure PostgreSQL Database
 
 This Terraform module creates a Azure PostgreSQL Database.
